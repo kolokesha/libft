@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malbert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 18:47:09 by malbert           #+#    #+#             */
-/*   Updated: 2019/09/09 18:48:04 by malbert          ###   ########.fr       */
+/*   Created: 2019/09/11 22:48:43 by malbert           #+#    #+#             */
+/*   Updated: 2019/09/11 23:26:06 by malbert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+void	ft_putstr_fd(const char *str, int fd)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	return (c);
+	while (str && *str)
+	{
+		ft_putchar_fd(*str, fd);
+		str++;
+	}
 }

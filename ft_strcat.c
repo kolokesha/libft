@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malbert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 18:47:09 by malbert           #+#    #+#             */
-/*   Updated: 2019/09/09 18:48:04 by malbert          ###   ########.fr       */
+/*   Created: 2019/09/05 20:37:07 by malbert           #+#    #+#             */
+/*   Updated: 2019/09/09 18:54:46 by malbert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+char	*ft_strcat(char *dest, const char *src)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	return (c);
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (dest[i])
+		i++;
+	while (src[j])
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

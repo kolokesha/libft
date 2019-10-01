@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_lstaddend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malbert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 18:47:09 by malbert           #+#    #+#             */
-/*   Updated: 2019/09/09 18:48:04 by malbert          ###   ########.fr       */
+/*   Created: 2019/09/26 15:47:42 by malbert           #+#    #+#             */
+/*   Updated: 2019/10/01 15:18:24 by malbert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+void	ft_lstaddend(t_list **alst, t_list *new)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	return (c);
+	t_list	*ptr;
+
+	if (!alst || !*alst)
+		return ;
+	ptr = *alst;
+	while (ptr->next)
+		ptr = ptr->next;
+	ptr->next = new;
 }

@@ -1,4 +1,16 @@
-#include "string.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malbert <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/01 12:53:09 by malbert           #+#    #+#             */
+/*   Updated: 2019/10/01 13:20:32 by malbert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 #include "stdio.h"
 
 static int	ft_whitespace(const char c)
@@ -11,9 +23,11 @@ static int	ft_whitespace(const char c)
 
 static int	check_nb(int c, int str_base)
 {
-	char *str = "01234567890abcdef";
-	char *str2 = "01234567890ABCDEF";
+	char *str;
+	char *str2;
 
+	str = "0123456789abcdef";
+	str2 = "0123456789ABCDEF";
 	while (str_base--)
 	{
 		if (c == str[str_base] || c == str2[str_base])
@@ -35,9 +49,9 @@ static int	value_of(char c)
 
 int			ft_atoi_base(const char *str, int str_base)
 {
-	int res;
-	int negative;
-	size_t i;
+	int		res;
+	int		negative;
+	size_t	i;
 
 	res = 0;
 	negative = 1;
@@ -47,14 +61,7 @@ int			ft_atoi_base(const char *str, int str_base)
 		negative = -1;
 	if (*str == '-' || *str == '+')
 		str++;
-	while(check_nb(*str, str_base)&& *str)
+	while (check_nb(*str, str_base) && *str)
 		res = res * str_base + value_of(*str++);
-		return (res * negative);
-}
-
-int main(void)
-{
-	char str[] = "abcd4";
-	int str_base = 16;
-	printf("%d", ft_atoi_base(str, str_base));
+	return (res * negative);
 }

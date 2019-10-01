@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malbert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 18:47:09 by malbert           #+#    #+#             */
-/*   Updated: 2019/09/09 18:48:04 by malbert          ###   ########.fr       */
+/*   Created: 2019/09/10 19:18:29 by malbert           #+#    #+#             */
+/*   Updated: 2019/09/14 01:43:08 by malbert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	return (c);
+	char	*srcc;
+	char	*dstc;
+	size_t	i;
+
+	i = -1;
+	srcc = (char *)src;
+	dstc = (char *)dst;
+	if (!srcc && !dstc)
+		return (0);
+	if (srcc < dstc)
+		while ((int)(--len) >= 0)
+			*(dstc + len) = *(srcc + len);
+	else
+		while (++i < len)
+			*(dstc + i) = *(srcc + i);
+	return (dst);
 }

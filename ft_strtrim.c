@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfold.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malbert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/01 12:54:24 by malbert           #+#    #+#             */
-/*   Updated: 2019/10/01 12:59:26 by malbert          ###   ########.fr       */
+/*   Created: 2019/09/11 14:04:00 by malbert           #+#    #+#             */
+/*   Updated: 2019/09/14 01:24:03 by malbert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void	*ft_lstfold(t_list *lst, void *(*f)(void *, void *))
+char	*ft_strtrim(char const *s)
 {
-	t_list	*list;
-	void	*res;
+	size_t	min;
+	size_t	max;
+	size_t	len;
 
-	list = lst;
-	res = list->content;
-	list = list->next;
-	while (list)
-	{
-		res = f(res, list->content);
-		list = list->next;
-	}
-	return (res);
+	if (!s)
+		return (NULL);
+	min = 0;
+	while (s[min] != '\0'
+			&& (s[min] == ' ' || s[min] == '\n' || s[min] == '\t'))
+		min++;
+	max = ft_strlen(s);
+	while (min < max
+			&& (s[max - 1] == ' ' || s[max - 1] == '\n' || s[max - 1] == '\t'))
+		max--;
+	if (min == max)
+		return (ft_strnew(1));
+	len = max - min;
+	return (ft_strsub(s, min, len));
 }
